@@ -1,19 +1,25 @@
-name: syria_grade2_app
-description: "تطبيق سِراج - الصف الثاني الابتدائي"
+name: serajapp
+description: "تطبيق سِراج .. رفيقك في التعلم لطلاب الصف الثاني الابتدائي في سورية"
 publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ^3.5.0
 
 dependencies:
   flutter:
     sdk: flutter
+  # سنعتمد مكتبة أساسية لقراءة ملفات الـ PDF محلياً
+  pdfx: ^2.6.0
 
 dev_dependencies:
   flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
+    sdk: flutter:
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
+
+  # تعريف الأصول وملف الكتاب المدرسي هنا بدقة
+  assets:
+    - assets/books/arabic_book.pdf
