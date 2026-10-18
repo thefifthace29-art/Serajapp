@@ -17,12 +17,14 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0' # نسخة فلاتر مستقرة تدعم المتطلبات الحديثة
+          flutter-version: '3.24.0'
           channel: 'stable'
+
+      - name: Recreate Android Project Structure
+        run: flutter create . --org com.siraj.app --project-name serajapp --platforms=android --overwrite
 
       - name: Install dependencies
         run: flutter pub get
 
       - name: Build APK
         run: flutter build apk --release
-        
