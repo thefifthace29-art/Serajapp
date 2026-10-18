@@ -1,3 +1,4 @@
+
 name: Build Android APK
 
 on:
@@ -17,14 +18,26 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          flutter-version: '3.29.3'
           channel: 'stable'
+          cache: true
+
+      - name: Show Flutter and Dart versions
+        run: |
+          flutter --version
+          dart --version
 
       - name: Recreate Android Project Structure
-        run: flutter create . --org com.siraj.app --project-name serajapp --platforms=android --overwrite
+        run: flutter create . --org com.siraj.app --project-name serajapp --platforms=android
 
       - name: Install dependencies
         run: flutter pub get
 
       - name: Build APK
         run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: serajapp-release
+          path: build/app/outputs/flutter-apk/app-release.apk
